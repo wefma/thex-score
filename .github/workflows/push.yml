@@ -11,13 +11,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - run: corepack enable
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: pnpm
 
-      - run: npm ci
+      - run: pnpm install --frozen-lockfile --ignore-scripts
 
-      - run: npx tsx ci/existsReplay.ts
+      - run: pnpm exec nuxt prepare
+
+      - run: pnpm exec tsx ci/existsReplay.ts
 
   check-releases:
     runs-on: ubuntu-latest
@@ -40,13 +45,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - run: corepack enable
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: pnpm
 
-      - run: npm ci
+      - run: pnpm install --frozen-lockfile --ignore-scripts
 
-      - run: npx tsx ci/duplicateVersions.ts
+      - run: pnpm exec nuxt prepare
+
+      - run: pnpm exec tsx ci/duplicateVersions.ts
 
   check-new-records:
     runs-on: ubuntu-latest
@@ -70,10 +80,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - run: corepack enable
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: pnpm
 
-      - run: npm install
+      - run: pnpm install --frozen-lockfile --ignore-scripts
 
-      - run: npx nuxt generate
+      - run: pnpm exec nuxt prepare
+
+      - run: pnpm exec nuxt generate

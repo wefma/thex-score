@@ -16,10 +16,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      # Pick your own package manager and build script
-      - run: npm install
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: pnpm exec nuxt prepare
       - name: Build for GitHub Pages
-        run: npx nuxt build --preset github_pages
+        run: pnpm exec nuxt build --preset github_pages
         env:
           NUXT_PUBLIC_DEPLOY_ENV: github_pages
       - name: Upload artifact
