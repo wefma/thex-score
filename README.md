@@ -27,14 +27,16 @@
 # githubから落としてくる
 $ git clone https://github.com/thex-score/thex-score.git
 $ cd thex-score
-# nodeの管理ツールであるnpmのバージョン管理ツールであるnvmでnpmの22を使う
+# nodeのバージョン管理ツールであるnvmでNode.js 22を使う
 $ nvm install 22
 $ nvm use 22
+# Node.js同梱のCorepackを有効化して、このリポジトリで指定されたpnpmを使う
+$ corepack enable
 # このリポジトリで指定されるパッケージのインストール
-$ npm install
+$ pnpm install
 # サーバを動かしてみる
-$ npx nuxt generate
-$ npx serve dist
+$ pnpm exec nuxt generate
+$ pnpm exec nuxt preview
 # 以降 http://localhost:3000 でお試しウェブサーバが動く.
 # 停止したければ Ctrl + C とかで停止させること.
 ```
@@ -91,8 +93,10 @@ $ cd thex-score
    1. コマンド
       ```bash
       $ nvm use 22
-      $ npx nuxt generate
-      $ npx serve dist
+      $ corepack enable
+      $ pnpm install
+      $ pnpm exec nuxt generate
+      $ pnpm exec nuxt preview
       # 以降 http://localhost:3000 でお試しウェブサーバが動く.
       # 停止したければ Ctrl + C とかで停止させること.
       ```
@@ -146,8 +150,10 @@ $ cd thex-score
    1. コマンド
       ```bash
       $ nvm use 22
-      $ npx nuxt generate
-      $ npx serve dist
+      $ corepack enable
+      $ pnpm install
+      $ pnpm exec nuxt generate
+      $ pnpm exec nuxt preview
       # 以降 http://localhost:3000 でお試しウェブサーバが動く.
       # 停止したければ Ctrl + C とかで停止させること.
       ```
