@@ -1,0 +1,19 @@
+services:
+  devcontainer:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    # image: "thex-score-devcontainer:latest"
+    command: "sleep infinity"
+    volumes:
+      - ../:/workspace/thex-score:cached
+      - ${HOME}/.gnupg:/home/node/.gnupg
+      - ${HOME}/.ssh:/home/node/.ssh:ro
+      - pnpm_store:/workspace/.pnpm-store
+      - codex_home:/home/node/.codex
+      - vscode_server:/home/node/.vscode-server
+
+volumes:
+  pnpm_store:
+  codex_home:
+  vscode_server:
