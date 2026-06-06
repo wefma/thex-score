@@ -21,26 +21,19 @@
 
 ## セットアップ
 
-最初に[nvm公式サイト](https://github.com/nvm-sh/nvm)に従って `nvm` を入れておく.
-
+最初に[docker](https://docs.docker.com/engine/install/)を入れておく。
+devcontainerを使用する都合上、開発環境である前提として現在のユーザをdockerグループに入れておくことを推奨する。
+ターミナルを開き、以下を入力する。
 ```bash
-# githubから落としてくる
 $ git clone https://github.com/thex-score/thex-score.git
-$ cd thex-score
-# nodeのバージョン管理ツールであるnvmでNode.js 22を使う
-$ nvm install 22
-$ nvm use 22
-# Node.js同梱のCorepackを有効化して、このリポジトリで指定されたpnpmを使う
-$ corepack enable
-# このリポジトリで指定されるパッケージのインストール
-$ pnpm install
-# サーバを動かしてみる
-$ pnpm exec nuxt generate
-$ pnpm exec nuxt preview
-# 以降 http://localhost:3000 でお試しウェブサーバが動く.
-# 停止したければ Ctrl + C とかで停止させること.
 ```
-
+vscodeで開き、`Ctrl + Shift + P`でコマンドを開き `devcontainer` と打ち、 `開発コンテナー: コンテナーでリビルドして開く` で開く。
+devcontainerで再度vscodeが起動するのでその状態で `Ctrl + Shift + P` でコマンドを開き、 `create new terminal` で `新しいターミナルを開く` で新しいターミナルを開き、ターミナル上に以下を入力する。
+```bash
+$ corepack pnpm exec nuxt generate
+$ corepack pnpm exec nuxt preview
+```
+以降 http://localhost:3000 でお試しウェブサーバが動く。停止したければターミナル上で `Ctrl + C` とかで停止させること。
 
 ## 新規記録追加
 
@@ -92,11 +85,8 @@ $ cd thex-score
 4. お試しウェブサーバを local で動かして大丈夫そうか確認する
    1. コマンド
       ```bash
-      $ nvm use 22
-      $ corepack enable
-      $ pnpm install
-      $ pnpm exec nuxt generate
-      $ pnpm exec nuxt preview
+      $ corepack pnpm exec nuxt generate
+      $ corepack pnpm exec nuxt preview
       # 以降 http://localhost:3000 でお試しウェブサーバが動く.
       # 停止したければ Ctrl + C とかで停止させること.
       ```
