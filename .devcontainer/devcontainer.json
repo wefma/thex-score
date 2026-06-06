@@ -14,5 +14,49 @@
             "onAutoForward": "notify"
         }
     },
-    "postCreateCommand": ".devcontainer/post-create.sh"
+    "postCreateCommand": ".devcontainer/post-create.sh",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "Vue.volar",
+                "ms-azuretools.vscode-containers",
+                "openai.chatgpt",
+                "ms-python.black-formatter",
+                "esbenp.prettier-vscode",
+                "redhat.vscode-yaml"
+            ],
+            "settings": {
+                "eslint.workingDirectories": [
+                    {
+                        "directory": ".",
+                        "changeProcessCWD": true
+                    }
+                ],
+                "[vue]": {
+                    "editor.defaultFormatter": "esbenp.prettier-vscode",
+                    "editor.formatOnSave": true
+                },
+                "[typescript]": {
+                    "editor.defaultFormatter": "esbenp.prettier-vscode",
+                    "editor.formatOnSave": true
+                },
+                "[javascript]": {
+                    "editor.defaultFormatter": "esbenp.prettier-vscode",
+                    "editor.formatOnSave": true
+                },
+                "[json]": {
+                    "editor.defaultFormatter": "vscode.json-language-features",
+                    "editor.formatOnSave": true
+                },
+                "[jsonc]": {
+                    "editor.defaultFormatter": "vscode.json-language-features",
+                    "editor.formatOnSave": true
+                },
+                "[yaml]": {
+                    "editor.defaultFormatter": "redhat.vscode-yaml",
+                    "editor.formatOnSave": true
+                }
+            }
+        }
+    }
 }
